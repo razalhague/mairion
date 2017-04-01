@@ -5,8 +5,8 @@
 
 	<persistence-unit name="mairion" transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-		<class>mairion.Task</class>
-		<class>mairion.User</class>
+		<class>org.penny_craal.mairion.Task</class>
+		<class>org.penny_craal.mairion.User</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />

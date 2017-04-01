@@ -1,13 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>fi.jamk.jee.g8211</groupId>
+  <groupId>org.penny_craal</groupId>
   <artifactId>mairion</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>mairion Maven Webapp</name>
+  <name>Mairion</name>
   <url>http://maven.apache.org</url>
   <properties>
+  <jdk.version>1.8</jdk.version>
   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   
@@ -105,7 +106,7 @@
 				<configuration>
 			        <httpConnector>
 			          <!--host>localhost</host-->
-			          <port>9080</port>
+			          <port>8080</port>
 			        </httpConnector>
 					<scanIntervalSeconds>10</scanIntervalSeconds>
 					<webApp>

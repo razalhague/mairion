@@ -1,7 +1,7 @@
-package Utils;
+package org.penny_craal.Utils;
 
-import mairion.Task;
-import mairion.User;
+import org.penny_craal.mairion.Task;
+import org.penny_craal.mairion.User;
 
 public class CreateDB {
 

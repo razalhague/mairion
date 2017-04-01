@@ -1,4 +1,4 @@
-package Utils;
+package org.penny_craal.Utils;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public class EntityDBManager {
 	private EntityTransaction transaction;
 	
 	public EntityDBManager() {
-		factory = Persistence.createEntityManagerFactory("mairion");
+		factory = Persistence.createEntityManagerFactory("org/penny_craal/mairion");
 		em = factory.createEntityManager();
 		transaction = em.getTransaction();	
 	}

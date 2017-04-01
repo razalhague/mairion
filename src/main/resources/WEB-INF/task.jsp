@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="mairion.*"%>
+<%@page import="org.penny_craal.mairion.*"%>
 
-<jsp:useBean id="taskDao" type="mairion.TaskDao" scope="request" />
+<jsp:useBean id="taskDao" type="org.penny_craal.mairion.TaskDao" scope="request" />
 
 <!DOCTYPE HTML>
 <html>

@@ -1,4 +1,4 @@
-package mairion;
+package org.penny_craal.mairion;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -9,7 +9,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		System.out.print("TEsti");
-		 EntityManagerFactory tehdas = Persistence.createEntityManagerFactory("mairion");
+		 EntityManagerFactory tehdas = Persistence.createEntityManagerFactory("org/penny_craal/mairion");
 	        EntityManager manageri = tehdas.createEntityManager();
 
 	        EntityTransaction transaktio = manageri.getTransaction();	        
