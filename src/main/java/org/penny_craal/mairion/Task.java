@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.PersistenceUnit;
 
 @Entity
 @NamedQuery(name = "Task.selectAll", query = "SELECT t from Task t")
@@ -23,7 +24,7 @@ public class Task {
 	@Column(name = "description", nullable = false)
 	private String description;
 	
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
 	//@Column(name = "user_fk", nullable = false)
 	@JoinColumn(name = "user_id")
 	private User user;
