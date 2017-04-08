@@ -1,4 +1,4 @@
-package org.penny_craal.mairion;
+package org.penny_craal.mairion.web;
 
 import java.util.Properties;
 

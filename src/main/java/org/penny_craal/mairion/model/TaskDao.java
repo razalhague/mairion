@@ -1,4 +1,4 @@
-package org.penny_craal.mairion;
+package org.penny_craal.mairion.model;
 
 import java.util.List;
 

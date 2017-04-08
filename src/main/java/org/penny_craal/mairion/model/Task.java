@@ -1,4 +1,4 @@
-package org.penny_craal.mairion;
+package org.penny_craal.mairion.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-import javax.persistence.PersistenceUnit;
 
 @Entity
 @NamedQuery(name = "Task.selectAll", query = "SELECT t from Task t")
@@ -20,34 +19,28 @@ public class Task {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "task_pk", nullable = false)
 	private Integer id;
-	
+
 	@Column(name = "description", nullable = false)
 	private String description;
-	
-	@ManyToOne(optional = true)
-	//@Column(name = "user_fk", nullable = false)
-	@JoinColumn(name = "user_id")
-	private User user;
-	
-	/*@OneToMany
-	@JoinColumn(name = "todo")
-	@Column(name = "user_fk", nullable = false)
-	private Task childTask;*/
+
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "user_id", nullable = false)
+	private User owner;
 
 	// Constructors
 	public Task() {
 		super();
 	}
-	
+
 	public Task(String description) {
 		this.description = description;
 	}
-	
-	public Task(String description, User user) {
+
+	public Task(String description, User owner) {
 		this.description = description;
-		this.user = user;
+		this.owner = owner;
 	}
-	
+
 	// Getters and Setters
 	public Integer getId() {
 		return id;
@@ -57,20 +50,12 @@ public class Task {
 		this.id = id;
 	}
 
-	public String getDescription() {
-		return description;
+	public User getOwner() {
+		return owner;
 	}
 
-	public void setName(String description) {
-		this.description = description;
-	}
-	
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
+	public void setOwner(User user) {
+		this.owner = user;
 	}
 
 	// Overrides
@@ -78,5 +63,5 @@ public class Task {
 	public String toString() {
 		return id + " " + description;
 	}
-	
+
 }
