@@ -114,6 +114,6 @@ public class User {
 
 	@Override
 	public String toString() {
-		return id + " " + name + " " + tasks;
+		return id + " " + name;
 	}
 }

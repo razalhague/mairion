@@ -10,6 +10,7 @@
 </head>
 <body>
 <h1><spring:message code="welcome"/></h1>
+<c:out value="${sessionScope.get('user')}"/>
 <c:forEach var="task" items="${taskDao.allTasks}">
 	<p>${task.toString()}</p>
 </c:forEach>

@@ -7,16 +7,12 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title><spring:message code="newUser.title"/></title>
+	<title><spring:message code="login.title"/></title>
 </head>
 <body>
 <h1><spring:message code="welcome"/></h1>
-<form:form action="/user/new" method="POST" modelAttribute="registration" acceptCharset="UTF-8">
-	<div>
-		<label for="name"><spring:message code="newUser.name"/></label>
-		<form:input id="name" path="name"/>
-		<form:errors id="nameErrors" path="name"/>
-	</div>
+<form:form action="/user/login" method="POST" modelAttribute="login" acceptCharset="UTF-8">
+	<form:errors id="loginErrors"/>
 	<div>
 		<label for="email"><spring:message code="account.email"/></label>
 		<form:input id="email" path="email"/>
@@ -27,7 +23,7 @@
 		<form:password id="password" path="password"/>
 		<form:errors id="passwordErrors" path="password"/>
 	<div>
-	<form:button><spring:message code="newUser.submit"/></form:button>
+	<form:button><spring:message code="login.submit"/></form:button>
 </form:form>
 </body>
 </html>
