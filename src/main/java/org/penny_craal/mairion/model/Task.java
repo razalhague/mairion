@@ -7,11 +7,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.validation.constraints.Size;
 
 @Entity
-@NamedQuery(name = "Task.selectAll", query = "SELECT t from Task t")
+@NamedQueries({
+		@NamedQuery(name = "Task.selectAll", query = "SELECT t from Task t"),
+		@NamedQuery(name = "Task.selectByUserId", query = "SELECT t FROM Task t where t.owner.id = :id")
+})
 public class Task {
 	@SuppressWarnings("unused")
 	private static final long serialVersionUID = 1L;

@@ -22,4 +22,10 @@ public class TaskDao {
 		TypedQuery<Task> task = em.createQuery("SELECT t FROM Task t", Task.class);
 		return task.getResultList();
 	}
+
+	public List<Task> getTasksByUser(User user) {
+		return em.createNamedQuery("Task.selectByUserId", Task.class)
+				.setParameter("id", user.getId())
+				.getResultList();
+	}
 }
