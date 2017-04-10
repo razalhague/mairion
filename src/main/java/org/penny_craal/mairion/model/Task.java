@@ -51,6 +51,10 @@ public class Task {
 		super();
 	}
 
+	public Task(User owner) {
+		this.owner = owner;
+	}
+
 	public Task(String title) {
 		this.title = title;
 	}
