@@ -27,6 +27,9 @@ public class Task {
 	@JoinColumn(name = "user_id", nullable = false)
 	private User owner;
 
+	@Column(name = "status", nullable = false)
+	private TaskStatus status = TaskStatus.unfinished;
+
 	// Constructors
 	public Task() {
 		super();
@@ -56,6 +59,14 @@ public class Task {
 
 	public void setOwner(User user) {
 		this.owner = user;
+	}
+
+	public TaskStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(TaskStatus status) {
+		this.status = status;
 	}
 
 	// Overrides
