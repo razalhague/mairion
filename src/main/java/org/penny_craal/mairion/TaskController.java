@@ -30,10 +30,9 @@ public class TaskController {
 
 	@RequestMapping(value="")
 	public String taskList(@ModelAttribute("tasks") ArrayList<Task> tasks,
-				@ModelAttribute("newTask") Task newTask, @ModelAttribute("user") User user,
-				HttpSession session) {
+				@ModelAttribute("newTask") Task newTask, HttpSession session) {
 		log.info("displaying task list");
-		user = (User) session.getAttribute("user");
+		User user = (User) session.getAttribute("user");
 		if (user == null) {
 			log.info("user not logged in, sending to login page");
 			return "redirect:/user/login";
