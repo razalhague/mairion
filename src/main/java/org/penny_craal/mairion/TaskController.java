@@ -11,6 +11,7 @@ import org.penny_craal.mairion.model.Task;
 import org.penny_craal.mairion.model.TaskDao;
 import org.penny_craal.mairion.model.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,16 +43,32 @@ public class TaskController {
 		return "taskList";
 	}
 
+	@RequestMapping(value = "/new", method = RequestMethod.GET)
+	public String newTaskForm(@ModelAttribute("task") Task task, HttpSession session) {
+		log.info("displaying new task creation form");
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			log.info("user not logged in, sending to login page");
+			return "redirect:/user/login";
+		}
+		return "newTask";
+	}
+
 	@RequestMapping(value = "/new", method = RequestMethod.POST)
-	public String newTask(@Validated @ModelAttribute("task") Task task, HttpSession session) {
+	public String newTask(@Validated @ModelAttribute("task") Task task, BindingResult br, HttpSession session) {
 		log.info("creating new task");
 		User user = (User) session.getAttribute("user");
 		if (user == null) {
 			log.info("user not logged in, sending to login page");
 			return "redirect:/user/login";
 		}
+		if (br.hasErrors()) {
+			log.info("errors in the task");
+			return "newTask";
+		}
 		task.setOwner(user);
 		taskDao.persist(task);
+		log.info("task created");
 		return "redirect:/task/" + task.getId();
 	}
 }
