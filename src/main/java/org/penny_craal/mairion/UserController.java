@@ -57,7 +57,7 @@ public class UserController {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
 			log.info("user successfully registered");
-			return "redirect:/user/" + user.getId();
+			return "redirect:/task";
 		}
 	}
 
