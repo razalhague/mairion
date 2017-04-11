@@ -1,6 +1,7 @@
 package org.penny_craal.mairion;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -14,8 +15,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "/task")
@@ -70,5 +73,45 @@ public class TaskController {
 		taskDao.persist(task);
 		log.info("task created");
 		return "redirect:/task/" + task.getId();
+	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ModelAndView editTaskForm(@PathVariable("id") int id, HttpSession session) {
+		log.info("displaying task edit form for task #" + id);
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			log.info("user not logged in, sending to login page");
+			return new ModelAndView("redirect:/user/login");
+		}
+		Optional<Task> optionalTask = taskDao.getTaskById(id);
+		return optionalTask
+				.map(task -> new ModelAndView("editTask", "task", task))
+				.orElse(new ModelAndView("notFound", "taskId", id));
+	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.POST)
+	public ModelAndView editTask(@PathVariable("id") int id,
+				@Validated @ModelAttribute("task") Task modifiedTask, BindingResult br,
+				HttpSession session) {
+		log.info("saving modifications to task #" + id);
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			log.info("user not logged in, sending to login page");
+			return new ModelAndView("redirect:/user/login");
+		}
+		if (br.hasErrors()) {
+			log.info("errors in the task");
+			return new ModelAndView("editTask");
+		}
+		Optional<Task> originalTask = taskDao.getTaskById(id);
+		if (originalTask.isPresent()) {
+			// spring can't fill in the task's owner, so copy it from the original task
+			modifiedTask.setOwner(originalTask.get().getOwner());
+			taskDao.merge(modifiedTask);
+			return new ModelAndView("redirect:/task/" + modifiedTask.getId());
+		} else {
+			log.info("task #" + id + " not found in DB");
+			return new ModelAndView("notFound", "taskId", id);
+		}
 	}
 }

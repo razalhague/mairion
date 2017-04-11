@@ -14,7 +14,8 @@ import javax.validation.constraints.Size;
 @Entity
 @NamedQueries({
 		@NamedQuery(name = "Task.selectAll", query = "SELECT t from Task t"),
-		@NamedQuery(name = "Task.selectByUserId", query = "SELECT t FROM Task t where t.owner.id = :id")
+		@NamedQuery(name = "Task.selectByUserId", query = "SELECT t FROM Task t where t.owner.id = :id"),
+		@NamedQuery(name = "Task.selectById", query = "SELECT t FROM Task t where t.id = :id"),
 })
 public class Task {
 	@SuppressWarnings("unused")
