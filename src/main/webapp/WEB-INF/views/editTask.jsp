@@ -5,14 +5,22 @@
 <%@ page import="org.penny_craal.mairion.model.TaskStatus"%>
 <%-- this is here because EL can't access static members --%>
 <c:set var="taskStatuses" value="<%= TaskStatus.values() %>"/>
+
+<c:set var="pageTitle"> <%-- no need to escape when using later in the page --%>
+	<spring:message code="editTask.title"/>
+	<c:choose>
+		<c:when test="${empty task.title}"><spring:message code="task.title.empty"/></c:when>
+		<c:otherwise><c:out value="${task.title}"/></c:otherwise>
+	</c:choose>
+</c:set>
 <!DOCTYPE HTML>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title><c:out value="${task.title}"><spring:message code="task.title.empty"/></c:out></title>
+	<title>${pageTitle}</title>
 </head>
 <body>
-<h1><c:out value="${task.title}"><spring:message code="task.title.empty"/></c:out></h1>
+<h1>${pageTitle}</h1>
 <form:form action="/task/${task.id}" method="POST" modelAttribute="task" acceptCharset="UTF-8">
 	<div>
 		<form:label path="title"><spring:message code="task.title"/></form:label>
@@ -35,7 +43,7 @@
 			</c:forEach>
 		</form:select>
 	</div>
-	<form:button><spring:message code="newTask.submit"/></form:button>
+	<form:button><spring:message code="editTask.submit"/></form:button>
 </form:form>
 </body>
 </html>
