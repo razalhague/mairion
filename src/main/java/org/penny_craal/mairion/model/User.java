@@ -1,5 +1,6 @@
 package org.penny_craal.mairion.model;
 
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +43,9 @@ public class User {
 
 	@Column(name = "password", nullable = false)
 	private String hashedPassword;
+
+	@Column(name = "timezone", nullable = false)
+	private ZoneId timezone = ZoneId.systemDefault();
 
 	@OneToMany(mappedBy = "owner", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Task> tasks = new ArrayList<>();
@@ -110,6 +114,14 @@ public class User {
 	public void addTask(Task task) {
 		task.setOwner(this);
 		tasks.add(task);
+	}
+
+	public ZoneId getTimezone() {
+		return timezone;
+	}
+
+	public void setTimezone(ZoneId timezone) {
+		this.timezone = timezone;
 	}
 
 	@Override

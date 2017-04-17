@@ -1,7 +1,11 @@
 package org.penny_craal.mairion.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -9,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -46,6 +51,10 @@ public class Task {
 
 	@Column(name = "status", nullable = false)
 	private TaskStatus status = TaskStatus.unfinished;
+
+	@OneToMany(mappedBy = "task", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	@Column(name = "work")
+	private List<TimeSpent> work;
 
 	// Constructors
 	public Task() {
@@ -104,6 +113,14 @@ public class Task {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public List<TimeSpent> getWork() {
+		return work;
+	}
+
+	public void setWork(List<TimeSpent> work) {
+		this.work = work;
 	}
 
 	// Overrides

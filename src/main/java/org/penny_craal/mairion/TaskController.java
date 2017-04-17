@@ -105,8 +105,9 @@ public class TaskController {
 		}
 		Optional<Task> originalTask = taskDao.getTaskById(id);
 		if (originalTask.isPresent()) {
-			// spring can't fill in the task's owner, so copy it from the original task
+			// spring can't fill in the task's owner or work, so copy them from the original task
 			modifiedTask.setOwner(originalTask.get().getOwner());
+			modifiedTask.setWork(originalTask.get().getWork());
 			taskDao.merge(modifiedTask);
 			return new ModelAndView("redirect:/task/" + modifiedTask.getId());
 		} else {
