@@ -15,8 +15,8 @@
     <properties>
         <jdk.version>1.8</jdk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <org.springframework-version>4.1.7.RELEASE</org.springframework-version>
-        <org.springframework.security-version>4.0.1.RELEASE</org.springframework.security-version>
+        <org.springframework-version>4.3.8.RELEASE</org.springframework-version>
+        <org.springframework.security-version>4.2.2.RELEASE</org.springframework.security-version>
     </properties>
 
 
@@ -161,7 +161,7 @@
                 <configuration>
                     <httpConnector>
                         <!--host>localhost</host-->
-                        <port>8080</port>
+                        <port>8081</port>
                     </httpConnector>
                     <scanIntervalSeconds>10</scanIntervalSeconds>
                     <webApp>
