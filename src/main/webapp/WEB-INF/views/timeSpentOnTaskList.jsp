@@ -21,12 +21,12 @@
 	<c:forEach var="timeSpent" items="${task.work}">
 		<div class="timeSpent">
 			<div class="timeSpentStartTime">
-				<spring:message code="timeSpent.startPoint"/>
+				<spring:message code="timeRange.startPoint"/>
 				<c:out value="${timeSpent.zonedStartPoint
 					.withZoneSameInstant(sessionScope.get('user').timezone).toLocalDateTime()}"/>
 			</div>
 			<div class="timeSpentEndTime">
-				<spring:message code="timeSpent.endPoint"/>
+				<spring:message code="timeRange.endPoint"/>
 				<c:out value="${timeSpent.zonedEndPoint
 					.withZoneSameInstant(sessionScope.get('user').timezone).toLocalDateTime()}"/>
 			</div>

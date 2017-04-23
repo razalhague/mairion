@@ -3,6 +3,8 @@ package org.penny_craal.mairion.model.validation;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+import org.penny_craal.mairion.model.TimeRange;
+
 public class TimeRangeStartsBeforeEndingValidator
 		implements ConstraintValidator<TimeRangeStartsBeforeEnding, TimeRange> {
 	@Override

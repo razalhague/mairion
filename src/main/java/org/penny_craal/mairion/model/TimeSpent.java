@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
 
 import org.penny_craal.mairion.model.validation.TimeRangeStartsBeforeEnding;
-import org.penny_craal.mairion.model.validation.TimeRange;
 
 @Entity
 @TimeRangeStartsBeforeEnding

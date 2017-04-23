@@ -20,7 +20,7 @@
 <form:form action="/time-spent/on-task/${task.id}/new" modelAttribute="durationTimeSpent" method="POST" acceptCharset="UTF-8">
 	<form:hidden path="userZone"/>
 	<div>
-		<form:label path="localEndPoint"><spring:message code="timeSpent.endPoint"/></form:label>
+		<form:label path="localEndPoint"><spring:message code="timeRange.endPoint"/></form:label>
 		<form:input path="localEndPoint"/>
 		<form:errors path="localEndPoint"/>
 	</div>

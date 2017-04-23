@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib
+        xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+        version="2.1">
+
+    <display-name>Mairion Functions</display-name>
+    <tlib-version>1.0</tlib-version>
+    <short-name>mairion-func</short-name>
+    <uri>http://mairion.penny-craal.org/functions</uri>
+
+    <function>
+        <name>taskStatuses</name>
+        <function-class>org.penny_craal.mairion.view.Functions</function-class>
+        <function-signature>org.penny_craal.mairion.model.TaskStatus[] taskStatuses()</function-signature>
+    </function>
+    <function>
+        <name>goalTypes</name>
+        <function-class>org.penny_craal.mairion.view.Functions</function-class>
+        <function-signature>org.penny_craal.mairion.model.GoalType[] goalTypes()</function-signature>
+    </function>
+    <function>
+        <name>progressToClass</name>
+        <function-class>org.penny_craal.mairion.view.Functions</function-class>
+        <function-signature>java.lang.String progressToCssClassName(double)</function-signature>
+    </function>
+</taglib>

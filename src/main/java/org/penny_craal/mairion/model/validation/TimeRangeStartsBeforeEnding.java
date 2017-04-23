@@ -13,7 +13,7 @@ import javax.validation.Payload;
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = TimeRangeStartsBeforeEndingValidator.class)
 public @interface TimeRangeStartsBeforeEnding {
-	String message() default "{timeRange.endNotAfterBeginning}";
+	String message() default "{TimeRangeStartsBeforeEnding}";
 
 	Class<?>[] groups() default {};
 

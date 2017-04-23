@@ -1,10 +1,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="mrn" uri="http://mairion.penny-craal.org/functions" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="org.penny_craal.mairion.model.TaskStatus"%>
-<%-- this is here because EL can't access static members --%>
-<c:set var="taskStatuses" value="<%= TaskStatus.values() %>"/>
 
 <c:set var="pageTitle"> <%-- no need to escape when using later in the page --%>
 	<spring:message code="editTask.title"/>
@@ -35,7 +33,7 @@
 	<div>
 		<form:label path="status"><spring:message code="task.status"/></form:label>
 		<form:select id="status" path="status">
-			<c:forEach var="taskStatus" items="${taskStatuses}">
+			<c:forEach var="taskStatus" items="${mrn:taskStatuses()}">
 				<%-- spring will automatically set selected on the appropriate option --%>
 				<form:option value="${taskStatus.name()}">
 					<spring:message code="task.status.${taskStatus.name()}"/>

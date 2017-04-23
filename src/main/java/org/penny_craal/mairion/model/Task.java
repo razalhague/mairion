@@ -53,8 +53,10 @@ public class Task {
 	private TaskStatus status = TaskStatus.unfinished;
 
 	@OneToMany(mappedBy = "task", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-	@Column(name = "work")
 	private List<TimeSpent> work;
+
+	@OneToMany(mappedBy = "task", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<AbstractGoal> goals;
 
 	// Constructors
 	public Task() {
@@ -121,6 +123,14 @@ public class Task {
 
 	public void setWork(List<TimeSpent> work) {
 		this.work = work;
+	}
+
+	public List<AbstractGoal> getGoals() {
+		return goals;
+	}
+
+	public void addGoal(AbstractGoal goal) {
+		goals.add(goal);
 	}
 
 	// Overrides

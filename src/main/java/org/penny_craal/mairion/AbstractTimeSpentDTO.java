@@ -5,7 +5,7 @@ import java.time.ZonedDateTime;
 import javax.validation.constraints.Size;
 
 import org.penny_craal.mairion.model.TimeSpent;
-import org.penny_craal.mairion.model.validation.TimeRange;
+import org.penny_craal.mairion.model.TimeRange;
 import org.penny_craal.mairion.model.validation.TimeRangeStartsBeforeEnding;
 
 /**

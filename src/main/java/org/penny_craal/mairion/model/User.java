@@ -50,6 +50,12 @@ public class User {
 	@OneToMany(mappedBy = "owner", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Task> tasks = new ArrayList<>();
 
+	@OneToMany(mappedBy = "planner", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<AbstractGoal> goals = new ArrayList<>();
+
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<TimeSpent> timesSpent = new ArrayList<>();
+
 	// Constructors
 	public User() {
 		super();
@@ -111,9 +117,21 @@ public class User {
 		this.hashedPassword = hashedPassword;
 	}
 
+	public List<Task> getTasks() {
+		return tasks;
+	}
+
 	public void addTask(Task task) {
 		task.setOwner(this);
 		tasks.add(task);
+	}
+
+	public List<AbstractGoal> getGoals() {
+		return goals;
+	}
+
+	public void addGoal(AbstractGoal goal) {
+		goals.add(goal);
 	}
 
 	public ZoneId getTimezone() {

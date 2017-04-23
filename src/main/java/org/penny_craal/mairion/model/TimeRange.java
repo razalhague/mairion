@@ -1,6 +1,8 @@
-package org.penny_craal.mairion.model.validation;
+package org.penny_craal.mairion.model;
 
 import java.time.ZonedDateTime;
+
+import org.penny_craal.mairion.model.validation.TimeRangeStartsBeforeEnding;
 
 /**
  * This interface is for any kind of class that represents a time range and wants to validate that
