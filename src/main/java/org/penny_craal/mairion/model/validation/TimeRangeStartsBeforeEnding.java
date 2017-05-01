@@ -8,7 +8,9 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-
+/**
+ * Specifies that the TimeRange's start point must be before the end point. The two being equal is an error.
+ */
 @Target({ElementType.TYPE, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = TimeRangeStartsBeforeEndingValidator.class)

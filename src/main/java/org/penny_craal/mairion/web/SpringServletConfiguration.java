@@ -14,6 +14,9 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+/**
+ * Annotation configuration for Spring.
+ */
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "org.penny_craal.mairion")

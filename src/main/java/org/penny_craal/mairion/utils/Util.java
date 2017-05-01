@@ -3,6 +3,9 @@ package org.penny_craal.mairion.utils;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Utility methods, used in various places for various things.
+ */
 public class Util {
 	/**
 	 * Tries to get exactly one value from a list.

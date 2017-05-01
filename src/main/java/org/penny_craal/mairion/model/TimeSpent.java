@@ -13,6 +13,9 @@ import javax.validation.constraints.Size;
 
 import org.penny_craal.mairion.model.validation.TimeRangeStartsBeforeEnding;
 
+/**
+ * A small stretch of time spent on working a specific Task, by a specific user.
+ */
 @Entity
 @TimeRangeStartsBeforeEnding
 public class TimeSpent implements TimeRange {

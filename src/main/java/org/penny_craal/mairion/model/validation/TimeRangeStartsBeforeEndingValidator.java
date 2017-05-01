@@ -5,6 +5,9 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.penny_craal.mairion.model.TimeRange;
 
+/**
+ * Validates that the TimeRange's start point is before the end point. The two being equal is an error.
+ */
 public class TimeRangeStartsBeforeEndingValidator
 		implements ConstraintValidator<TimeRangeStartsBeforeEnding, TimeRange> {
 	@Override

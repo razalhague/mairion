@@ -4,6 +4,9 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 
+/**
+ * A DTO for passing login information from the view to the controller.
+ */
 public class LoginDTO {
 	@Email
 	private String email;

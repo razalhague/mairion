@@ -20,6 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+ * Controller for actions related to tasks.
+ */
 @Controller
 @RequestMapping(value = "/task")
 public class TaskController {
@@ -32,6 +35,13 @@ public class TaskController {
 		this.taskDao = taskDao;
 	}
 
+	/**
+	 * Lists all the user's tasks.
+	 * @param tasks	list of tasks that the view should display
+	 * @param newTask a model object for the new task button
+	 * @param session the session object
+	 * @return the appropriate view
+	 */
 	@RequestMapping(value="")
 	public String taskList(@ModelAttribute("tasks") ArrayList<Task> tasks,
 				@ModelAttribute("newTask") Task newTask, HttpSession session) {
@@ -46,6 +56,12 @@ public class TaskController {
 		return "taskList";
 	}
 
+	/**
+	 * Displays a form for creating a new task.
+	 * @param task the object for the view's form
+	 * @param session the session object
+	 * @return the appropriate view
+	 */
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public String newTaskForm(@ModelAttribute("task") Task task, HttpSession session) {
 		log.info("displaying new task creation form");
@@ -57,6 +73,13 @@ public class TaskController {
 		return "newTask";
 	}
 
+	/**
+	 * Creates a new Task from the provided data.
+	 * @param task an object created by Spring from the form data
+	 * @param br the result of binding the form data into the above object
+	 * @param session the session object
+	 * @return the appropriate view
+	 */
 	@RequestMapping(value = "/new", method = RequestMethod.POST)
 	public String newTask(@Validated @ModelAttribute("task") Task task, BindingResult br, HttpSession session) {
 		log.info("creating new task");
@@ -75,6 +98,12 @@ public class TaskController {
 		return "redirect:/task/" + task.getId();
 	}
 
+	/**
+	 * Displays a form for editing an existing task.
+	 * @param id the id of the task to edit
+	 * @param session the session object
+	 * @return the appropriate view
+	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ModelAndView editTaskForm(@PathVariable("id") int id, HttpSession session) {
 		log.info("displaying task edit form for task #" + id);
@@ -89,6 +118,14 @@ public class TaskController {
 				.orElse(new ModelAndView("notFound", "taskId", id));
 	}
 
+	/**
+	 * Saves changes made to the Task.
+	 * @param id the ID of the Task to be edited.
+	 * @param modifiedTask the new data for the task, created by Spring from the form data
+	 * @param br the result of binding the form data into the above object
+	 * @param session the session object
+	 * @return the appropriate view
+	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.POST)
 	public ModelAndView editTask(@PathVariable("id") int id,
 				@Validated @ModelAttribute("task") Task modifiedTask, BindingResult br,

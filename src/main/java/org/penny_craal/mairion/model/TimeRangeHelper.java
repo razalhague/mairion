@@ -7,10 +7,7 @@ import java.time.Duration;
  */
 public class TimeRangeHelper {
 	/**
-	 * Calculates the how long
-	 * @param a
-	 * @param b
-	 * @return
+	 * Returns the how long the overlap between the given TimeRanges is.
 	 */
 	public static Duration overlapDuration(TimeRange a, TimeRange b) {
 		if (doesNotOverlap(a, b)) {

@@ -18,6 +18,9 @@ import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Email;
 
+/**
+ * A user of the system.
+ */
 @Entity
 @NamedQueries({
 		@NamedQuery(name = "User.selectAll", query = "SELECT u from User u"),

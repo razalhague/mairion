@@ -9,6 +9,9 @@ import javax.validation.constraints.NotNull;
 import org.penny_craal.mairion.model.TimeRange;
 import org.penny_craal.mairion.model.validation.TimeRangeStartsBeforeEnding;
 
+/**
+ * A DTO for pass data about TimePeriods from the views.
+ */
 @TimeRangeStartsBeforeEnding
 public class TimePeriodDTO implements TimeRange {
 	@NotNull

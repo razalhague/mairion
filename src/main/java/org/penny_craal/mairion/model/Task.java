@@ -16,6 +16,9 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
+/**
+ * A Task, the most important object in the system.
+ */
 @Entity
 @NamedQueries({
 		@NamedQuery(name = "Task.selectAll", query = "SELECT t from Task t"),
